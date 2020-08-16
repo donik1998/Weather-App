@@ -2,4 +2,6 @@
 
 Weather app for personal use
 
-## Getting Started
+## TODOs
+1. Solar day animation
+2. Detailed Info Screens

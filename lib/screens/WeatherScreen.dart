@@ -420,30 +420,6 @@ class _WeatherScreenState extends State<WeatherScreen>
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  'Solar day',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'PathwayGothicOne-Regular',
-                    fontSize: 20.0,
-                    shadows: <Shadow>[
-                      Shadow(
-                        color: Colors.black,
-                        blurRadius: 5.0,
-                        offset: Offset(0, 0),
-                      ),
-                      Shadow(
-                        color: Colors.black,
-                        blurRadius: 5.0,
-                        offset: Offset(0, 0),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
             ],
           ),
         ),
