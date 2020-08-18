@@ -1,6 +1,8 @@
 import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:how_is_my_weather/screens/WeatherScreen.dart';
 import 'package:how_is_my_weather/tools/Weather.dart';
@@ -45,79 +47,26 @@ class _MyAppState extends State<MyApp> {
           color: Colors.blueAccent.shade400,
           child: position == null
               ? Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
-                    children: <Widget>[
-                      Text(
-                        'Something went wrong\nTry to refresh',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 24.0,
-                          color: Colors.cyan,
-                          fontWeight: FontWeight.bold,
-                          shadows: <Shadow>[
-                            Shadow(
-                              blurRadius: 10.0,
-                              color: Colors.black,
-                              offset: Offset(0, 0),
-                            ),
-                            Shadow(
-                              blurRadius: 10.0,
-                              color: Colors.black,
-                              offset: Offset(0, 0),
-                            ),
-                          ],
-                        ),
-                      ),
-                      MaterialButton(
-                        padding: EdgeInsets.all(10.0),
-                        elevation: 10.0,
+                  child: CircularProgressIndicator(),
+                )
+              : source == null || position == null
+                  ? Center(
+                      child: FlatButton(
+                        color: Colors.blue.shade400,
                         shape: CircleBorder(
                           side: BorderSide(
-                            color: Colors.white,
                             width: 2.0,
-                            style: BorderStyle.solid,
+                            color: Colors.white,
                           ),
                         ),
-                        splashColor: Colors.black,
-                        color: Colors.cyan.shade500,
                         onPressed: () {
                           getData();
                           setState(() {});
                         },
                         child: Icon(
                           Icons.refresh,
-                          size: 50.0,
-                          color: Colors.cyanAccent,
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              : source == null
-                  ? Center(
-                      child: MaterialButton(
-                        padding: EdgeInsets.all(10.0),
-                        elevation: 10.0,
-                        shape: CircleBorder(
-                          side: BorderSide(
-                            color: Colors.white,
-                            width: 2.0,
-                            style: BorderStyle.solid,
-                          ),
-                        ),
-                        splashColor: Colors.black,
-                        color: Colors.cyan.shade500,
-                        onPressed: () async {
-                          getData();
-                          setState(() {});
-                        },
-                        child: Icon(
-                          Icons.refresh,
-                          size: 50.0,
-                          color: Colors.cyanAccent,
+                          size: 100.0,
+                          color: Colors.white,
                         ),
                       ),
                     )
