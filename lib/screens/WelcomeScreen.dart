@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -47,7 +48,16 @@ class _MyAppState extends State<MyApp> {
           color: Colors.blueAccent.shade400,
           child: position == null
               ? Center(
-                  child: CircularProgressIndicator(),
+                  child: Container(
+                    width: 200.0,
+                    height: 200.0,
+                    child: FlareActor(
+                      'assets/flareAnimations/loadingAnimation.flr',
+                      fit: BoxFit.fitWidth,
+                      alignment: Alignment.center,
+                      animation: 'Untitled',
+                    ),
+                  ),
                 )
               : source == null || position == null
                   ? Center(

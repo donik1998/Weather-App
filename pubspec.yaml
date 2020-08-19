@@ -25,6 +25,8 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/flareAnimations/
+
   fonts:
     - family: RobotoSlab-Regular
       fonts:
