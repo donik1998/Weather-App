@@ -275,10 +275,14 @@ class _WeatherScreenState extends State<WeatherScreen>
                                                   animationDuration:
                                                       Duration(seconds: 10),
                                                   child: Image.asset(
-                                                      'assets/images/snow.jpg'),
+                                                    'assets/images/snow.jpg',
+                                                    height: 100.0,
+                                                  ),
                                                 )
                                               : Image.asset(
-                                                  'assets/images/other.png'),
+                                                  'assets/images/other.png',
+                                                  height: 100.0,
+                                                ),
                       Text(
                         widget.weather.condition,
                         style: TextStyle(
