@@ -40,7 +40,7 @@ class _TesterWidgetState extends State<TesterWidget>
       ),
     );
     _controller = AnimationController(
-      vsync: this,
+      TickerProvider: this,
       duration: Duration(hours: 1),
     )..repeat();
     _animationTween = Tween(begin: 0.0, end: 1.0);

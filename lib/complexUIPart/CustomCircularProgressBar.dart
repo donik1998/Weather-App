@@ -34,7 +34,7 @@ class _CustomCircleProgressBarState extends State<CustomCircleProgressBar>
   void initState() {
     super.initState();
     _colorAnimationController =
-        AnimationController(vsync: this, duration: widget.animationDuration);
+        AnimationController(TickerProvider: this, duration: widget.animationDuration);
     _colorAnimationController.addListener(() {
       setState(() {});
     });

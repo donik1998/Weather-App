@@ -33,9 +33,9 @@ class _RainAnimationState extends State<RainAnimation>
   void initState() {
     super.initState();
     _animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 1));
+        AnimationController(TickerProvider: this, duration: Duration(seconds: 1));
     _delayedAnimationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 1));
+        AnimationController(TickerProvider: this, duration: Duration(seconds: 1));
     _delayedAnimationController.addListener(() {
       if (_delayedAnimation.isCompleted) {
         _animationController.forward(from: 0);

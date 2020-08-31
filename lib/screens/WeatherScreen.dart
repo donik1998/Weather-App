@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:geolocator/geolocator.dart';
@@ -34,7 +32,7 @@ class _WeatherScreenState extends State<WeatherScreen>
     super.initState();
     _controller = AnimationController(
       duration: Duration(seconds: 2),
-      vsync: this,
+      TickerProvider: this,
       value: 0.0,
       upperBound: 1,
       lowerBound: -1,

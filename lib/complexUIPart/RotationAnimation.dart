@@ -20,7 +20,7 @@ class _RotationAnimationState extends State<RotationAnimation>
   void initState() {
     super.initState();
     _rotationController =
-        AnimationController(duration: widget.animationDuration, vsync: this)
+        AnimationController(duration: widget.animationDuration, TickerProvider: this)
           ..repeat();
   }
 
