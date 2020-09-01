@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CustomCircleProgressBar extends StatefulWidget {
@@ -34,7 +35,7 @@ class _CustomCircleProgressBarState extends State<CustomCircleProgressBar>
   void initState() {
     super.initState();
     _colorAnimationController =
-        AnimationController(TickerProvider: this, duration: widget.animationDuration);
+        AnimationController(vsync: this, duration: widget.animationDuration);
     _colorAnimationController.addListener(() {
       setState(() {});
     });

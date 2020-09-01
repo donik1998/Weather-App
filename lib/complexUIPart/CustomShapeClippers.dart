@@ -65,6 +65,18 @@ class AnimatedCloudShapeClipper extends CustomClipper<Path> {
   bool shouldReclip(CustomClipper oldClipper) => true;
 }
 
+//class ReversedCloudClipper extends CustomClipper<Path> {
+//  @override
+//  getClip(Size size) {
+//    final path = Path();
+//
+//    return path;
+//  }
+//
+//  @override
+//  bool shouldReclip(CustomClipper<Path> oldClipper) => true;
+//}
+
 class RainDropShapeClipper extends CustomClipper<Path> {
   @override
   getClip(Size size) {

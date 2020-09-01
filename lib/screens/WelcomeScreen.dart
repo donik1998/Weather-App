@@ -1,9 +1,7 @@
 import 'dart:convert';
 
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:how_is_my_weather/screens/WeatherScreen.dart';
 import 'package:how_is_my_weather/tools/Weather.dart';
@@ -48,35 +46,79 @@ class _MyAppState extends State<MyApp> {
           color: Colors.blueAccent.shade400,
           child: position == null
               ? Center(
-                  child: Container(
-                    width: 200.0,
-                    height: 200.0,
-                    child: FlareActor(
-                      'assets/flareAnimations/loadingAnimation.flr',
-                      fit: BoxFit.fitWidth,
-                      alignment: Alignment.center,
-                      animation: 'Untitled',
-                    ),
-                  ),
-                )
-              : source == null || position == null
-                  ? Center(
-                      child: FlatButton(
-                        color: Colors.blue.shade400,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    children: <Widget>[
+                      Text(
+                        'Something went wrong\nTry to refresh',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 24.0,
+                          color: Colors.cyan,
+                          fontWeight: FontWeight.bold,
+                          shadows: <Shadow>[
+                            Shadow(
+                              blurRadius: 10.0,
+                              color: Colors.black,
+                              offset: Offset(0, 0),
+                            ),
+                            Shadow(
+                              blurRadius: 10.0,
+                              color: Colors.black,
+                              offset: Offset(0, 0),
+                            ),
+                          ],
+                        ),
+                      ),
+                      MaterialButton(
+                        padding: EdgeInsets.all(10.0),
+                        elevation: 10.0,
                         shape: CircleBorder(
                           side: BorderSide(
-                            width: 2.0,
                             color: Colors.white,
+                            width: 2.0,
+                            style: BorderStyle.solid,
                           ),
                         ),
+                        splashColor: Colors.black,
+                        color: Colors.cyan.shade500,
                         onPressed: () {
                           getData();
                           setState(() {});
                         },
                         child: Icon(
                           Icons.refresh,
-                          size: 100.0,
-                          color: Colors.white,
+                          size: 50.0,
+                          color: Colors.cyanAccent,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              : source == null
+                  ? Center(
+                      child: MaterialButton(
+                        padding: EdgeInsets.all(10.0),
+                        elevation: 10.0,
+                        shape: CircleBorder(
+                          side: BorderSide(
+                            color: Colors.white,
+                            width: 2.0,
+                            style: BorderStyle.solid,
+                          ),
+                        ),
+                        splashColor: Colors.black,
+                        color: Colors.cyan.shade500,
+                        onPressed: () async {
+                          getData();
+                          setState(() {});
+                        },
+                        child: Icon(
+                          Icons.refresh,
+                          size: 50.0,
+                          color: Colors.cyanAccent,
                         ),
                       ),
                     )

@@ -8,9 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import '../lib/screens/WelcomeScreen.dart';
-
-
+import 'file:///C:/Users/Administrator/AndroidStudioProjects/how_is_my_weather/lib/screens/WelcomeScreen.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

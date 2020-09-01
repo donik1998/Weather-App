@@ -1,4 +1,6 @@
 import 'dart:convert';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:geolocator/geolocator.dart';
@@ -8,7 +10,6 @@ import 'package:how_is_my_weather/complexUIPart/RainAnimation.dart';
 import 'package:how_is_my_weather/complexUIPart/RotationAnimation.dart';
 import 'package:how_is_my_weather/tools/Extensions.dart';
 import 'package:how_is_my_weather/tools/Weather.dart';
-import 'package:how_is_my_weather/tools/weather_icons_icons.dart';
 import 'package:http/http.dart';
 
 class WeatherScreen extends StatefulWidget {
@@ -32,7 +33,7 @@ class _WeatherScreenState extends State<WeatherScreen>
     super.initState();
     _controller = AnimationController(
       duration: Duration(seconds: 2),
-      TickerProvider: this,
+      vsync: this,
       value: 0.0,
       upperBound: 1,
       lowerBound: -1,
@@ -273,19 +274,16 @@ class _WeatherScreenState extends State<WeatherScreen>
                                                   animationDuration:
                                                       Duration(seconds: 10),
                                                   child: Image.asset(
-                                                    'assets/images/snow.jpg',
-                                                    height: 100.0,
-                                                  ),
+                                                      'assets/images/snow.jpg'),
                                                 )
                                               : Image.asset(
-                                                  'assets/images/other.png',
-                                                  height: 100.0,
-                                                ),
+                                                  'assets/images/other.png'),
                       Text(
                         widget.weather.condition,
                         style: TextStyle(
                           color: _isNight ? Colors.white : Colors.black,
-                          fontSize: 16.0,
+                          fontFamily: 'Lato-Regular',
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ],
@@ -317,7 +315,8 @@ class _WeatherScreenState extends State<WeatherScreen>
                         widget.weather.humidity.toString() + '%',
                         style: TextStyle(
                           color: _isNight ? Colors.white : Colors.black,
-                          fontSize: 16.0,
+                          fontFamily: 'Lato-Regular',
+                          fontWeight: FontWeight.bold,
                         ),
                       )
                     ],
@@ -385,7 +384,8 @@ class _WeatherScreenState extends State<WeatherScreen>
                           widget.weather.convertedWindDirection(),
                           style: TextStyle(
                             color: _isNight ? Colors.white : Colors.black,
-                            fontSize: 16.0,
+                            fontFamily: 'Lato-Regular',
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       )
@@ -419,7 +419,8 @@ class _WeatherScreenState extends State<WeatherScreen>
                           widget.weather.windSpeed + ' m/s',
                           style: TextStyle(
                             color: _isNight ? Colors.white : Colors.black,
-                            fontSize: 16.0,
+                            fontFamily: 'Lato-Regular',
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
@@ -430,7 +431,7 @@ class _WeatherScreenState extends State<WeatherScreen>
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Text(
-                  'Solar Day',
+                  'Solar day',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -446,78 +447,65 @@ class _WeatherScreenState extends State<WeatherScreen>
                         color: Colors.black,
                         blurRadius: 5.0,
                         offset: Offset(0, 0),
-                      )
+                      ),
                     ],
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          WeatherIcons.sun,
-                          size: 100.0,
-                          color: _isNight ? Colors.white : Colors.black,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10.0),
-                          child: Text(
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      Image.asset(
+                        'assets/images/sunrise.png',
+                        height: 100.0,
+                      ),
+                      Text(
+                        widget.weather
+                                .convertedDate(widget.weather.sunrise)
+                                .hour
+                                .toString() +
+                            ':' +
                             widget.weather
-                                    .convertedDate(widget.weather.sunrise)
-                                    .hour
-                                    .toString() +
-                                ':' +
-                                widget.weather
-                                    .convertedDate(widget.weather.sunrise)
-                                    .minute
-                                    .toString(),
-                            style: TextStyle(
-                              color: _isNight ? Colors.white : Colors.black,
-                              fontFamily: 'Lato-Regular',
-                              fontSize: 16.0,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          WeatherIcons.sunrise,
-                          size: 100.0,
+                                .convertedDate(widget.weather.sunrise)
+                                .minute
+                                .toString(),
+                        style: TextStyle(
                           color: _isNight ? Colors.white : Colors.black,
+                          fontFamily: 'Lato-Regular',
+                          fontWeight: FontWeight.bold,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10.0),
-                          child: Text(
+                      )
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Image.asset(
+                        'assets/images/sunset.png',
+                        height: 100.0,
+                      ),
+                      Text(
+                        widget.weather
+                                .convertedDate(widget.weather.sunset)
+                                .hour
+                                .toString() +
+                            ':' +
                             widget.weather
-                                    .convertedDate(widget.weather.sunset)
-                                    .hour
-                                    .toString() +
-                                ':' +
-                                widget.weather
-                                    .convertedDate(widget.weather.sunset)
-                                    .minute
-                                    .toString(),
-                            style: TextStyle(
-                              color: _isNight ? Colors.white : Colors.black,
-                              fontFamily: 'Lato-Regular',
-                              fontSize: 16.0,
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
+                                .convertedDate(widget.weather.sunset)
+                                .minute
+                                .toString(),
+                        style: TextStyle(
+                          color: _isNight ? Colors.white : Colors.black,
+                          fontFamily: 'Lato-Regular',
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    ],
+                  ),
+                ],
               ),
             ],
           ),
